@@ -1,9 +1,8 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,6 +56,31 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
+
+        System.out.println("");
+        System.out.println("");
+        System.out.println("======MATRICULA====================================================");
+
+        Cliente cliente = new Cliente();
+        cliente.setNome("MarcosMelo");
+        cliente.setCpf("123456789");
+
+        Matricula mat = new Matricula();
+        mat.setIdMatricula(1L);
+        mat.setCliente(cliente);
+        mat.setDataMatricula(LocalDate.now());
+        List<Curso> listaDeCursos = new ArrayList<>();
+        listaDeCursos.add(curso1);
+        listaDeCursos.add(curso2);
+        mat.setCurso(listaDeCursos);
+
+        System.out.println(cliente.getNome() + " matriculado com sucesso nos seguintes cursos:");
+        mat.getCurso().forEach(c -> {
+            System.out.println(c.getTitulo());
+        });
+
+        System.out.println("==========================================================");
+        System.out.println("");
 
     }
 
